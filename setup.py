@@ -25,13 +25,17 @@ from distutils.command.build import build
 from distutils.command.clean import clean
 from distutils.command.install import install
 
-PROJECT = about.appName
-FOR_KDE_4=False
 
-if 'kde4' in sys.argv:
-    sys.argv.remove('kde4')
-    FOR_KDE_4=True
-    print 'UI files will be created for KDE 4.. '
+PROJECT = about.appName
+
+#eğer kde python desteklerse bu kodları kullanırız
+
+#FOR_KDE_5=False
+#if 'kde5' in sys.argv:
+    #sys.argv.remove('kde5')
+    #FOR_KDE_5=True
+    #print 'UI files will be created for KDE 5.. '
+
 
 def makeDirs(directory):
     if not os.path.exists(directory):
@@ -53,14 +57,9 @@ def update_messages():
 
     # Collect UI files
     filelist = []
-    # UI files for kde4
-    if FOR_KDE_4:
-        for filename in glob.glob1("ui", "*.ui"):
-            os.system("pykde4uic -o ui/ui_%s.py ui/%s" % (filename.split(".")[0], filename))
     #UI files for pure-qt
-    else :
-        for filename in glob.glob1("ui", "*.ui"):
-            os.system("py2uic5 -o ui/ui_%s.py ui/%s" % (filename.split(".")[0], filename))#, PROJECT))
+    for filename in glob.glob1("ui", "*.ui"):
+        os.system("py2uic5 -o ui/ui_%s.py ui/%s" % (filename.split(".")[0], filename))#, PROJECT))
 
     # Collect headers for desktop files
     for filename in glob.glob("data/*.desktop.in"):
@@ -116,14 +115,10 @@ class Build(build):
             os.system("intltool-merge -d po %s %s" % (filename, filename[:-3]))
 
         print "Generating UIs..."
-        # Collect UI for kde4
-        if FOR_KDE_4:
-            for filename in glob.glob1("ui", "*.ui"):
-                os.system("pykde4uic -o build/servicemanager/ui_%s.py ui/%s" % (filename.split(".")[0], filename))
+        
         # Collect UI for pure-qt
-        else:
-            for filename in glob.glob1("ui", "*.ui"):
-                os.system("py2uic5 -o build/servicemanager/ui_%s.py ui/%s" % (filename.split(".")[0], filename))#, PROJECT))
+        for filename in glob.glob1("ui", "*.ui"):
+            os.system("py2uic5 -o build/servicemanager/ui_%s.py ui/%s" % (filename.split(".")[0], filename))#, PROJECT))
 
 
         print "Generating RCs..."
@@ -132,7 +127,7 @@ class Build(build):
 
 class Install(install):
     def run(self):
-        install.run(self)
+        #install.run(self)
         def rst2doc(lang):
             if os.path.exists(os.path.join('help', lang)):
                 for doc in ('main_help', 'preferences_help'):
@@ -147,13 +142,15 @@ class Install(install):
             bin_dir = "/usr/bin"
 
         locale_dir = os.path.join(root_dir, "locale")
-        if FOR_KDE_4:
-            apps_dir = os.path.join(root_dir, "applications/kde4")
-            services_dir = os.path.join(root_dir, "kde4/services")
-            project_dir = os.path.join(root_dir, "kde4/apps", PROJECT)
-        else:
-            apps_dir = os.path.join(root_dir, "applications")
-            project_dir = os.path.join(root_dir, PROJECT)
+        
+        #eğer kde python desteklerse bu kodları kullanırız 
+        #if FOR_KDE_5:
+            #apps_dir = os.path.join(root_dir, "applications")
+            #services_dir = os.path.join(root_dir, "kservices5")
+            #project_dir = os.path.join(root_dir, "kde4/apps", PROJECT)
+        #else:
+        apps_dir = os.path.join(root_dir, "applications")
+        project_dir = os.path.join(root_dir, PROJECT)
 
         # Make directories
         print "Making directories..."
@@ -163,8 +160,10 @@ class Install(install):
         makeDirs(apps_dir)
         makeDirs(pixmap_dir)
         makeDirs(project_dir)
-        if FOR_KDE_4:
-            makeDirs(services_dir)
+        
+        #eğer kde python desteklerse bu kodları kullanırız
+        #if FOR_KDE_5:
+            #makeDirs(services_dir)
 
         # Install desktop files
         print "Installing desktop files..."
@@ -173,8 +172,9 @@ class Install(install):
         
         shutil.copy("data/flag-yellow.png" , pixmap_dir) #% PROJECT
 
-        if FOR_KDE_4:
-            shutil.copy("data/kcm_%s.desktop" % PROJECT, services_dir)
+        #eğer kde python desteklerse bu kodları kullanırız
+        #if FOR_KDE_5:
+            #shutil.copy("data/kcm_%s.desktop" % PROJECT, services_dir)
         shutil.rmtree('build/data')
 
         # Install codes
@@ -222,19 +222,24 @@ class Uninstall(Command):
         bin_dir = "/usr/bin"
 
         locale_dir = os.path.join(root_dir, "locale")
-        if FOR_KDE_4:
-            apps_dir = os.path.join(root_dir, "applications/kde4")
-            services_dir = os.path.join(root_dir, "kde4/services")
-            project_dir = os.path.join(root_dir, "kde4/apps", PROJECT)
-        else:
-            apps_dir = os.path.join(root_dir, "applications")
-            project_dir = os.path.join(root_dir, PROJECT)
+        
+        #eğer kde python desteklerse bu kodları kullanırız
+        #if FOR_KDE_5:
+            #apps_dir = os.path.join(root_dir, "applications")
+            #services_dir = os.path.join(root_dir, "kservices5")
+            #project_dir = os.path.join(root_dir, "kde4/apps", PROJECT)
+        #else:
+        apps_dir = os.path.join(root_dir, "applications")
+        project_dir = os.path.join(root_dir, PROJECT)
 
         print 'Uninstalling ...'
         remove(project_dir)
         remove(apps_dir +"/%s.desktop" % PROJECT)
-        if FOR_KDE_4:
-            remove(services_dir +"/kcm_%s.desktop" % PROJECT)
+        
+        #eğer kde python desteklerse bu kodları kullanırız
+        #if FOR_KDE_5:
+            #remove(services_dir +"/kcm_%s.desktop" % PROJECT)
+            
         for filename in glob.glob1('po', '*.po'):
             lang = filename.rsplit(".", 1)[0]
             remove(os.path.join(locale_dir, "%s/LC_MESSAGES" % lang, "%s.mo" % PROJECT))
