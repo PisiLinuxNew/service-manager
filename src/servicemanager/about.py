@@ -18,7 +18,7 @@ import context as ctx
 PACKAGE     = "Service Manager"
 appName     = "service-manager"
 modName     = "servicemanager"
-version     = "3.0.0"
+version     = "3.1.0"
 homePage    = "http://developer.pardus.org.tr/projects/service-manager"
 bugEmail    = "bugs@pardus.org.tr"
 icon        = "flag-yellow"
