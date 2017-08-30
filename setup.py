@@ -154,11 +154,11 @@ class Install(install):
 
         # Make directories
         print "Making directories..."
-        pixmap_dir="/usr/share/pixmap"
+        pixmap_dir="/usr/share/pixmaps"
         makeDirs(bin_dir)
         makeDirs(locale_dir)
         makeDirs(apps_dir)
-        makeDirs(pixmap_dir)
+        # makeDirs(pixmap_dir)
         makeDirs(project_dir)
         
         #eğer kde python desteklerse bu kodları kullanırız
