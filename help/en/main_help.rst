@@ -1,7 +1,7 @@
 Service Manager
 ---------------
 
-**Service Manager** is the Pardus Project you can use to manage services's status and their start options. A service's status may be running or stopped and its start option can be set as 'Run on startup' or not. If a service is running, it can serve something related to its job otherwise it is stopped and serves nothing.
+**Service Manager** is the Pisi Linux project you can use to manage services's status and their start options. A service's status may be running or stopped and its start option can be set as 'Run on startup' or not. If a service is running, it can serve something related to its job otherwise it is stopped and serves nothing.
 
 
 Listing And Searching Services

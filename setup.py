@@ -169,8 +169,9 @@ class Install(install):
         print "Installing desktop files..."
 
         shutil.copy("data/%s.desktop" % PROJECT, apps_dir)
-        
-        shutil.copy("data/flag-yellow.png" , pixmap_dir) #% PROJECT
+        flags=["flag-yellow.svg", "flag-green.svg", "flag-black.svg"]
+        for i in flags:
+            shutil.copy("data/%s" % i , pixmap_dir) #% PROJECT
 
         #eğer kde python desteklerse bu kodları kullanırız
         #if FOR_KDE_5:
