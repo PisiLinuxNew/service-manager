@@ -15,20 +15,18 @@
 import sys
 import dbus
 
-# Pds Stuff
-import servicemanager.context as ctx
-
 # Application Stuff
 import servicemanager.about as about
+# Application Stuff
+from servicemanager.base import MainManager
 
-# Qt Stuff
-from PyQt5.QtCore import pyqtSignal
+    # Pds Stuff
+from pds.quniqueapp import QUniqueApplication
+from servicemanager.context import KIcon, i18n
 
-# Enable plugin if session is Kde4
-if ctx.Pds.session == ctx.pds.Kde4:
-    def CreatePlugin(widget_parent, parent, component_data):
-        from servicemanager.kcmodule import ServiceManager
-        return ServiceManager(component_data, parent)
+# Create a QUniqueApllication instance
+app = QUniqueApplication(sys.argv, catalog=about.appName)
+
 
 if __name__ == '__main__':
 
@@ -37,45 +35,12 @@ if __name__ == '__main__':
         from dbus.mainloop.pyqt5 import DBusQtMainLoop
         DBusQtMainLoop(set_as_default = True)
 
-    # Pds vs KDE
-    if ctx.Pds.session == ctx.pds.Kde4:
-
-        # PyKDE4 Stuff
-        from PyKDE4.kdeui import *
-        from PyKDE4.kdecore import *
-
-        # Application Stuff
-        from servicemanager.standalone import ServiceManager
-        from servicemanager.about import aboutData
-
-        # Set Command-line arguments
-        KCmdLineArgs.init(sys.argv, aboutData)
-
-        # Create a Kapplitcation instance
-        app = KApplication()
-
-        # Create Main Widget
-        mainWindow = ServiceManager(None, aboutData.appName)
-        mainWindow.show()
-
-    else:
-
-        # Application Stuff
-        from servicemanager.base import MainManager
-
-        # Pds Stuff
-        from pds.quniqueapp import QUniqueApplication
-        from servicemanager.context import KIcon, i18n
-
-        # Create a QUniqueApllication instance
-        app = QUniqueApplication(sys.argv, catalog=about.appName)
-
-        # Create Main Widget and make some settings
-        mainWindow = MainManager(None)
-        mainWindow.show()
-        mainWindow.resize(640, 480)
-        mainWindow.setWindowTitle(i18n(about.PACKAGE))
-        mainWindow.setWindowIcon(KIcon(about.icon))
+    # Create Main Widget and make some settings
+    mainWindow = MainManager(None)
+    mainWindow.show()
+    mainWindow.resize(640, 480)
+    mainWindow.setWindowTitle(i18n(about.PACKAGE))
+    mainWindow.setWindowIcon(KIcon(about.icon))
 
     # Create connection for lastWindowClosed signal to quit app
     app.lastWindowClosed.connect(app.quit)

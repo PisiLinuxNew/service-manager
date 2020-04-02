@@ -40,5 +40,5 @@ Comment[tr]=Sistem servisleri yönetim uygulaması.
 Exec=service-manager
 Icon=flag-yellow
 Type=Application
-Categories=Qt;KDE;System;
+Categories=Qt;KDE;System;Settings
 NotShowIn=KDE;

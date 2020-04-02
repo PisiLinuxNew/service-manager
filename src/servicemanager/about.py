@@ -18,9 +18,9 @@ import context as ctx
 PACKAGE     = "Service Manager"
 appName     = "service-manager"
 modName     = "servicemanager"
-version     = "3.1.0"
-homePage    = "http://developer.pardus.org.tr/projects/service-manager"
-bugEmail    = "bugs@pardus.org.tr"
+version     = "3.1.2"
+homePage    = "https://github.com/PisiLinuxNew/service-manager"
+bugEmail    = "admin@pisilinux.org"
 icon        = "flag-yellow"
 catalog     = appName
 

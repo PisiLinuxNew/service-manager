@@ -27,12 +27,7 @@ from servicemanager.widgets import ServiceItemWidget, ServiceItem
 
 # Pds vs KDE
 import servicemanager.context as ctx
-if ctx.Pds.session == ctx.pds.Kde5:
-    #from PyKDE4.kdecore import i18n
-    #pykde yok
-    pass
-else:
-    from servicemanager.context import i18n
+from servicemanager.context import i18n
 
 class MainManager(QtWidgets.QWidget):
     def __init__(self, parent, standAlone=True):
