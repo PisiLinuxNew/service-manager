@@ -151,10 +151,12 @@ class Install(install):
         #else:
         apps_dir = os.path.join(root_dir, "applications")
         project_dir = os.path.join(root_dir, PROJECT)
+        pixmap_dir = os.path.join(root_dir, "usr/share/pixmap")
 
         # Make directories
         print "Making directories..."
-        pixmap_dir="/usr/share/pixmaps"
+        #pixmap_dir="/usr/share/pixmaps"
+        makeDirs(pixmap_dir)
         makeDirs(bin_dir)
         makeDirs(locale_dir)
         makeDirs(apps_dir)
@@ -171,7 +173,7 @@ class Install(install):
         shutil.copy("data/%s.desktop" % PROJECT, apps_dir)
         flags=["flag-yellow.svg", "flag-green.svg", "flag-black.svg"]
         for i in flags:
-            shutil.copy("data/%s" % i, os.path.join(root_dir, pixmap_dir))
+            shutil.copy("data/%s" % i, pixmap_dir))
 
         #eğer kde python desteklerse bu kodları kullanırız
         #if FOR_KDE_5:
