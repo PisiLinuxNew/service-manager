@@ -21,7 +21,7 @@ modName     = "servicemanager"
 version     = "3.1.2"
 homePage    = "https://github.com/PisiLinuxNew/service-manager"
 bugEmail    = "admin@pisilinux.org"
-icon        = "flag-yellow"
+icon        = "/usr/share/pixmaps/flag-yellow.svg"
 catalog     = appName
 
 if ctx.Pds.session == ctx.pds.Kde4:
