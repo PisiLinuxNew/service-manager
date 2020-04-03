@@ -151,16 +151,14 @@ class Install(install):
         #else:
         apps_dir = os.path.join(root_dir, "applications")
         project_dir = os.path.join(root_dir, PROJECT)
-        pixmap_dir = os.path.join(root_dir, "usr/share/pixmaps")
+        pixmap_dir = os.path.join(root_dir, "pixmaps")
 
         # Make directories
         print "Making directories..."
-        #pixmap_dir="/usr/share/pixmaps"
         makeDirs(pixmap_dir)
         makeDirs(bin_dir)
         makeDirs(locale_dir)
         makeDirs(apps_dir)
-        # makeDirs(pixmap_dir)
         makeDirs(project_dir)
         
         #eğer kde python desteklerse bu kodları kullanırız
