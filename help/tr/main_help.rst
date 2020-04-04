@@ -1,7 +1,7 @@
 Servis Yöneticisi
 -----------------
 
-**Service Yöneticisi** sisteminizdeki servislerin durumunu ve servislerin otomatik olarak başlamasının ayarlarını yapabileceğiniz Pardus uygulamasıdır. Bir servisin durumu çalışıyor ya da durmuş olabilir ve otomatik başlama ayarı da etkinleştirilmiş ya da etkisizleştirilmiş olabilir. Eğer bir servis çalışıyorsa, yaptığı iş ile alakalı bir şeyler sunar eğer durmuş ise hiçbir şey sunmaz. 
+**Service Yöneticisi** sisteminizdeki servislerin durumunu ve servislerin otomatik olarak başlamasının ayarlarını yapabileceğiniz Pisi Linux uygulamasıdır. Bir servisin durumu çalışıyor ya da durmuş olabilir ve otomatik başlama ayarı da etkinleştirilmiş ya da etkisizleştirilmiş olabilir. Eğer bir servis çalışıyorsa, yaptığı iş ile alakalı bir şeyler sunar eğer durmuş ise hiçbir şey sunmaz. 
 
 
 Servis Listeleme ve Arama

@@ -11,17 +11,7 @@
 # Please read the COPYING file.
 #
 
-# Qt Stuff
-from PyQt5 import QtWidgets
-from PyQt5.QtCore import *
-
-# Pds vs KDE
-import servicemanager.context as ctx
-if ctx.Pds.session == ctx.pds.Kde4:
-    from PyKDE4.kdeui import KIcon
-    from PyKDE4.kdecore import i18n
-else:
-    from servicemanager.context import KIcon, i18n
+from servicemanager.context import KIcon, i18n
 
 # Application Stuff
 from servicemanager.ui_item import Ui_ServiceItemWidget
@@ -30,6 +20,7 @@ from servicemanager.ui_info import Ui_InfoWidget
 # PDS Stuff
 from pds.gui import *
 from pds.qprogressindicator import QProgressIndicator
+from pds.qiconloader import *
 
 # Python Stuff
 import time
@@ -64,10 +55,10 @@ class ServiceItemWidget(QtWidgets.QWidget):
 
         self.toggleButtons()
 
-        self.ui.buttonStart.setIcon(KIcon("media-playback-start"))
-        self.ui.buttonStop.setIcon(KIcon("media-playback-stop"))
-        self.ui.buttonReload.setIcon(KIcon("view-refresh"))
-        self.ui.buttonInfo.setIcon(KIcon("dialog-information"))
+        self.ui.buttonStart.setIcon(QIcon.fromTheme("media-playback-start"))
+        self.ui.buttonStop.setIcon(QIcon.fromTheme("media-playback-stop"))
+        self.ui.buttonReload.setIcon(QIcon.fromTheme("view-refresh"))
+        self.ui.buttonInfo.setIcon(QIcon.fromTheme("dialog-information"))
 
         self.toggled = False
         self.root = parent
@@ -96,10 +87,10 @@ class ServiceItemWidget(QtWidgets.QWidget):
             state = self.iface.info(self.package)[2]
         if state in ('on', 'started', 'conditional_started'):
             self.running = True
-            icon = 'flag-green'
+            icon = '/usr/share/pixmaps/flag-green'
         else:
             self.running = False
-            icon = 'flag-black'
+            icon = '/usr/share/pixmaps/flag-black'
 
         self.ui.buttonStop.setEnabled(self.running)
         self.ui.buttonReload.setEnabled(self.running)
@@ -182,7 +173,7 @@ class ServiceItemInfo(PAbstractBox):
         self.ui = Ui_InfoWidget()
         self.ui.setupUi(self)
         self.ui.buttonHide.clicked.connect(self.hideDescription)
-        self.ui.buttonHide.setIcon(KIcon("dialog-close"))
+        self.ui.buttonHide.setIcon(QIcon.fromTheme("window-close"))
 
         self._animation = 2
         self._duration = 500

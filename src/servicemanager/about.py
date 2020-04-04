@@ -18,10 +18,10 @@ import context as ctx
 PACKAGE     = "Service Manager"
 appName     = "service-manager"
 modName     = "servicemanager"
-version     = "3.1.0"
-homePage    = "http://developer.pardus.org.tr/projects/service-manager"
-bugEmail    = "bugs@pardus.org.tr"
-icon        = "flag-yellow"
+version     = "3.1.2"
+homePage    = "https://github.com/PisiLinuxNew/service-manager"
+bugEmail    = "admin@pisilinux.org"
+icon        = "/usr/share/pixmaps/flag-yellow"
 catalog     = appName
 
 if ctx.Pds.session == ctx.pds.Kde4:

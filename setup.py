@@ -151,14 +151,14 @@ class Install(install):
         #else:
         apps_dir = os.path.join(root_dir, "applications")
         project_dir = os.path.join(root_dir, PROJECT)
+        pixmap_dir = os.path.join(root_dir, "pixmaps")
 
         # Make directories
         print "Making directories..."
-        pixmap_dir="/usr/share/pixmaps"
+        makeDirs(pixmap_dir)
         makeDirs(bin_dir)
         makeDirs(locale_dir)
         makeDirs(apps_dir)
-        # makeDirs(pixmap_dir)
         makeDirs(project_dir)
         
         #eğer kde python desteklerse bu kodları kullanırız
@@ -169,8 +169,9 @@ class Install(install):
         print "Installing desktop files..."
 
         shutil.copy("data/%s.desktop" % PROJECT, apps_dir)
-        
-        shutil.copy("data/flag-yellow.png" , pixmap_dir) #% PROJECT
+        flags=["flag-yellow.svg", "flag-green.svg", "flag-black.svg"]
+        for i in flags:
+            shutil.copy("data/%s" % i, pixmap_dir)
 
         #eğer kde python desteklerse bu kodları kullanırız
         #if FOR_KDE_5:
