@@ -95,7 +95,7 @@ class ServiceItemWidget(QtWidgets.QWidget):
         self.ui.buttonStop.setEnabled(self.running)
         self.ui.buttonReload.setEnabled(self.running)
 
-        self.ui.labelStatus.setPixmap(KIcon(icon).pixmap(32, 32))
+        self.ui.labelStatus.setPixmap(QIcon(icon).pixmap(32,32)) #FIXME:Commit this line
         self.showStatus()
         self.runningAtStart = False
         if state in ('on', 'stopped'):
