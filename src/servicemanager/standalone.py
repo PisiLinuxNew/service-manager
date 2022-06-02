@@ -12,8 +12,8 @@
 #
 
 # PyKDE4 Stuff
-from PyKDE4.kdeui import *
-from PyKDE4.kdecore import KGlobal
+from PyKDE5.kdeui import *
+from PyKDE5.kdecore import KGlobal
 
 # Service Manager
 from servicemanager.base import MainManager
@@ -21,7 +21,7 @@ from servicemanager.base import MainManager
 class ServiceManager(KMainWindow):
     def __init__ (self, *args):
         KMainWindow.__init__(self)
-        self.setWindowIcon(KIcon("flag-yellow"))
+        self.setWindowIcon(QIcon("/usr/share/pixmaps/icons/flag-yellow.svg"))
 
         # This is very important for translations when running as kcm_module
         KGlobal.locale().insertCatalog("service-manager")
