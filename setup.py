@@ -151,7 +151,7 @@ class Install(install):
         #else:
         apps_dir = os.path.join(root_dir, "applications")
         project_dir = os.path.join(root_dir, PROJECT)
-        pixmap_dir = os.path.join(root_dir, "pixmaps")
+        pixmap_dir = os.path.join(root_dir, "pixmaps/icons")
 
         # Make directories
         print "Making directories..."
