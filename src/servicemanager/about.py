@@ -21,13 +21,13 @@ modName     = "servicemanager"
 version     = "3.1.2"
 homePage    = "https://github.com/PisiLinuxNew/service-manager"
 bugEmail    = "admin@pisilinux.org"
-icon        = "/usr/share/pixmaps/flag-yellow"
+icon        = "/usr/share/pixmaps/icons/flag-yellow.svg"
 catalog     = appName
 
-if ctx.Pds.session == ctx.pds.Kde4:
+if ctx.Pds.session == ctx.pds.Kde5:
 
     # PyKDE4 Stuff
-    from PyKDE4.kdecore import KAboutData, ki18n, ki18nc
+    from PyKDE5.kdecore import KAboutData, ki18n, ki18nc
 
     programName = ki18n(PACKAGE)
     description = ki18n(PACKAGE)

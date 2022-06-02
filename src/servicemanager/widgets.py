@@ -87,10 +87,10 @@ class ServiceItemWidget(QtWidgets.QWidget):
             state = self.iface.info(self.package)[2]
         if state in ('on', 'started', 'conditional_started'):
             self.running = True
-            icon = '/usr/share/pixmaps/flag-green'
+            icon = '/usr/share/pixmaps/icons/flag-green'
         else:
             self.running = False
-            icon = '/usr/share/pixmaps/flag-black'
+            icon = '/usr/share/pixmaps/icons/flag-black'
 
         self.ui.buttonStop.setEnabled(self.running)
         self.ui.buttonReload.setEnabled(self.running)

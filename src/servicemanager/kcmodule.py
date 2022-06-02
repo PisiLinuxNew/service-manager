@@ -12,8 +12,8 @@
 #
 
 # PyKDE4 Stuff
-from PyKDE4.kdeui import *
-from PyKDE4.kdecore import *
+from PyKDE5.kdeui import *
+from PyKDE5.kdecore import *
 
 # DBUS
 import dbus
