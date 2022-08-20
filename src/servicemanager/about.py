@@ -27,7 +27,7 @@ catalog     = appName
 if ctx.Pds.session == ctx.pds.Kde5:
 
     # PyKDE4 Stuff
-    from PyKDE5.kdecore import KAboutData, ki18n, ki18nc
+    from PyKDE5.kdecore import KAboutData
 
     programName = ki18n(PACKAGE)
     description = ki18n(PACKAGE)

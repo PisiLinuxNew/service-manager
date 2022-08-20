@@ -16,16 +16,17 @@ import sys
 import dbus
 
 # Application Stuff
-import servicemanager.about as about
+#import servicemanager.about as about
 # Application Stuff
 from servicemanager.base import MainManager
+from PyQt5.QtGui import QIcon
 
     # Pds Stuff
 from pds.quniqueapp import QUniqueApplication
 from servicemanager.context import KIcon, i18n
 
 # Create a QUniqueApllication instance
-app = QUniqueApplication(sys.argv, catalog=about.appName)
+app = QUniqueApplication(sys.argv, catalog="service-manager")
 
 
 if __name__ == '__main__':
@@ -39,8 +40,8 @@ if __name__ == '__main__':
     mainWindow = MainManager(None)
     mainWindow.show()
     mainWindow.resize(640, 480)
-    mainWindow.setWindowTitle(i18n(about.PACKAGE))
-    mainWindow.setWindowIcon(KIcon(about.icon))
+    mainWindow.setWindowTitle("Service Manager")
+    mainWindow.setWindowIcon(QIcon("/usr/share/pixmaps/plymouth-pisilinux.png"))
 
     # Create connection for lastWindowClosed signal to quit app
     app.lastWindowClosed.connect(app.quit)
